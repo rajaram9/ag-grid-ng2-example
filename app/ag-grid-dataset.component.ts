@@ -1,6 +1,5 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 
-
 import {GridOptions} from 'ag-grid/main';
 
 @Component({
@@ -17,15 +16,13 @@ export class AgGridDataset implements OnInit {
     private columnDefs: any[];
     public rowCount: string;
 
-    constructor() {
+    constructor() {}
+
+    ngOnInit(): void {
         this.gridOptions = <GridOptions> {};
         this.createRowData();
         this.createColumnDefs();
         this.showGrid = true;
-    }
-
-    ngOnInit(): void {
-        this.rowCount = "";
     }
 
     private createRowData() {
@@ -101,13 +98,12 @@ export class AgGridDataset implements OnInit {
         ];
     }
 
-
-    private onModelUpdated() {
+    public onModelUpdated() {
         console.log('onModelUpdated');
         this.calculateRowCount();
     }
 
-    private onReady() {
+    public onReady() {
         console.log('onReady');
         this.calculateRowCount();
     }
@@ -120,7 +116,5 @@ export class AgGridDataset implements OnInit {
             this.rowCount = processedRows.toLocaleString() + ' / ' + totalRows.toLocaleString();
         }
     }
-
-
 
 }

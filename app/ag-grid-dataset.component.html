@@ -5,8 +5,6 @@
         [columnDefs]="columnDefs"
         [rowData]="rowData"
 
-
-
         enableColResize
         enableSorting
         enableFilter
@@ -25,6 +23,8 @@
 
     <!--<div> Status bar: Rows selected: [(ngModel)]="hero.name"</div>-->
     <div> Status bar: Rows selected: {{rowCount}}</div>
+
+    <div> Is data in grid changed: {{isDataChenged}}</div>
 
 
 </div>
