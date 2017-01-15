@@ -5,6 +5,8 @@
         [columnDefs]="columnDefs"
         [rowData]="rowData"
 
+
+
         enableColResize
         enableSorting
         enableFilter
@@ -14,7 +16,15 @@
         toolPanelSuppressValues
         debug
         rowHeight="22"
-        rowSelection="multiple">
+        rowSelection="multiple"
+
+        (gridReady)="onReady($event)"
+        (modelUpdated)="onModelUpdated()"
+        >
     </ag-grid-ng2>
+
+    <!--<div> Status bar: Rows selected: [(ngModel)]="hero.name"</div>-->
+    <div> Status bar: Rows selected: {{rowCount}}</div>
+
 
 </div>

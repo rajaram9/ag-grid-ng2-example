@@ -15,6 +15,7 @@ export class AgGridDataset implements OnInit {
     public showGrid: boolean;
     public rowData: any[];
     private columnDefs: any[];
+    public rowCount: string;
 
     constructor() {
         this.gridOptions = <GridOptions> {};
@@ -24,7 +25,7 @@ export class AgGridDataset implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.rowCount = "";
     }
 
     private createRowData() {
@@ -99,5 +100,27 @@ export class AgGridDataset implements OnInit {
             }
         ];
     }
+
+
+    private onModelUpdated() {
+        console.log('onModelUpdated');
+        this.calculateRowCount();
+    }
+
+    private onReady() {
+        console.log('onReady');
+        this.calculateRowCount();
+    }
+
+    private calculateRowCount() {
+        if (this.gridOptions.api && this.rowData) {
+            var model = this.gridOptions.api.getModel();
+            var totalRows = this.rowData.length;
+            var processedRows = model.getRowCount();
+            this.rowCount = processedRows.toLocaleString() + ' / ' + totalRows.toLocaleString();
+        }
+    }
+
+
 
 }
